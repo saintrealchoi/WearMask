@@ -13,24 +13,25 @@ def draw_image_with_boxes(filename, result_list):
     pyplot.imshow(data)
     # get the context for drawing boxes
     ax = pyplot.gca()
+
     # plot each box
     for result in result_list:
-     # get coordinates
-     x, y, width, height = result['box']
-     # create the shape
-     rect = Rectangle((x, y), width, height, fill=False, color='red')
-     # draw the box
-     ax.add_patch(rect)
-    # draw the dots
+         # get coordinates
+         x, y, width, height = result['box']
+         # create the shape
+         rect = Rectangle((x, y), width, height, fill=False, color='red')
+         # draw the box
+         ax.add_patch(rect)
+        # draw the dots
     for key, value in result['keypoints'].items():
-     # create and draw dot
-     dot = Circle(value, radius=2, color='red')
-     ax.add_patch(dot)
-     # show the plot
-     pyplot.show()
+         # create and draw dot
+         dot = Circle(value, radius=2, color='red')
+         ax.add_patch(dot)
+         # show the plot
+         pyplot.show()
 
 
-filename = 'test2.jpg'
+filename = 'test3.jpg'
 # load image from file
 pixels = pyplot.imread(filename)
 # create the detector, using default weights

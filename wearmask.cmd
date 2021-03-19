@@ -1,7 +1,7 @@
 @echo off
-cd c:/projects/wearmask
+cd c:/projects/project
 # ------------------------- [edit] ------------------------ #
 set FLASK_APP=wearmask
 set FLASK_ENV=development
 # --------------------------------------------------------- #
-c:/venvs/wearmask/scripts/activate
+c:/venvs/project/scripts/activate

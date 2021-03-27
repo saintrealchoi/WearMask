@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action = "http://localhost:5000/fileUpload" method = "POST"
+      enctype = "multipart/form-data">
+        <input type = "file" accept = "image/*" onchange = "loadFile(event)" name = "file"/>
+        <script>
+          var loadFile = function(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+              var output = document.getElementById('output');
+              output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+          };
+        </script>
+        <img width = "300px" id="output"/>
+        <input type = "submit"/>
+</form>
+
+
+<a href = "{{url_for('prediction_result.index',image = output)}}">다음버튼</a>
+{% endblock %}
+

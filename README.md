@@ -9,5 +9,5 @@ Capstone Software Project 2021
 ## Framework
 
 1. Flask
-2. Django
+2. React
 3. keras

@@ -6,26 +6,7 @@ model = None
 
 bp = Blueprint('prediction_home', __name__, url_prefix='/')
 
-def load_modelh5():
-	# load the pre-trained Keras model (here we are using a model
-	# pre-trained on ImageNet and provided by Keras, but you can
-	# substitute in your own networks just as easily)
-	global model
-	model = load_model('./model.h5')
 
-def prepare_image(image, target):
-	# if the image mode is not RGB, convert it
-	if image.mode != "RGB":
-		image = image.convert("RGB")
-
-	# resize the input image and preprocess it
-	image = image.resize(target)
-	image = img_to_array(image)
-	image = np.expand_dims(image, axis=0)
-	image = imagenet_utils.preprocess_input(image)
-
-	# return the processed image
-	return image
 
 
 @bp.route('/prediction')

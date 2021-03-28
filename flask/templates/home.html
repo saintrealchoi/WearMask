@@ -1,36 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-    <div class="container my-3">
-    <table class="table">
-        <thead>
-        <tr class="thead-dark">
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성일시</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if question_list %}
-        {% for question in question_list %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>
-                <a href="{{ url_for('question.detail', question_id=question.id) }}">{{ question.subject }}</a>
-            </td>
-            <td>{{ question.create_date }}</td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <tr>
-            <td colspan="3">질문이 없습니다.</td>
-        </tr>
-        {% endif %}
-        </tbody>
-    </table>
-</div>
-    <div>
-        <a href = "{{url_for('prediction_home.index')}}"> 버튼</a>
+   
+<style type="text/css">
+
+html, body{
+    background-color: rgb(199, 226, 207);
+    width : 100vw;
+    height : 100vh;
+}
+.container{
+    text-align: center;
+    width : 100%;
+    height : 100%;
+}
+
+</style>
+
+
+<div class ="container">
+    <div class = "row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <br/>
+                <h2>마스크착용분류기</h2>
+            </div>
+
+            <h3>이용하실 서비스는?</h3>
+            <br/>
+            <tr>
+                <td >
+                    {% if g.user %}
+                    <button 
+                    type="button" 
+                    class="btn btn-secondary btn-lg"
+                    onclick = "location.href= '{{ url_for('webcam.index')}}';">
+                    웹캠 인식</button></td>
+                    {% else %}
+                    <button 
+                    type="button" 
+                    class="btn btn-secondary btn-lg"
+                    onclick = "location.href = '{{ url_for('auth.login')}}';">
+                    웹캠 인식</button></td>
+                    {% endif %}
+                <td ><button 
+                    type="button" 
+                    class="btn btn-secondary btn-lg"
+                    onclick =  "location.href= '{{ url_for('prediction_home.index')}}';">
+                    사진 인식</button></td>
+            </tr>
+            <br/>
+        </div>
     </div>
+</div>
 
 {% endblock %}

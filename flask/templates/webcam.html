@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if g.user %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <img src="{{ url_for('webcam.video_feed') }}" width= 500px/>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <h1>로그인안함</h1>
+        </div>
+    </div>
+</div>
+{% endif %}
+<button 
+    type="button" 
+    class="btn btn-secondary btn-lg"
+    onclick = "location.href= '{{ url_for('webcam.video_closed')}}';">
+    홈으로
+</button>
+{% endblock %}
